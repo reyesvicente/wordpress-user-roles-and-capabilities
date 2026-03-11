@@ -81,6 +81,11 @@ class Solvease_Roles_Capabilities_Admin
 
     public function export_roles_capabilities()
     {
+        check_ajax_referer('solvease_export_capability', 'solvease_export_capability_nonce');
+
+        if (!current_user_can($this->plugin_caps['export'])) {
+            wp_die(__('You do not have sufficient permissions to export roles and capabilities.', $this->translation_domain));
+        }
 
         $prepared_roles = (array)$this->prepare_export_roles();
         header('Content-type: application/json');

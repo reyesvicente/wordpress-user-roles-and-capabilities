@@ -480,6 +480,11 @@ class Solvease_Roles_Capabilities_Functionality
      */
     public function solvease_roles_capabilities_save_capabilities()
     {
+        $plugin_caps = Solvease_Roles_Capabilities_User_Caps::solvease_roles_capabilities_caps();
+        if (!current_user_can($plugin_caps['manage_all_capabilities'])) {
+             return $this->solvease_roles_caps_default_warning();
+        }
+
         if (!isset($_POST['solvease_verify_capability_nonce']) || !wp_verify_nonce($_POST['solvease_verify_capability_nonce'], 'solvease_save_capability')) {
             return $this->solvease_roles_caps_default_warning();
         } else {
@@ -518,6 +523,11 @@ class Solvease_Roles_Capabilities_Functionality
      */
     public function solvease_change_role_display_name()
     {
+        $plugin_caps = Solvease_Roles_Capabilities_User_Caps::solvease_roles_capabilities_caps();
+        if (!current_user_can($plugin_caps['rename_role'])) {
+             return $this->solvease_roles_caps_default_warning();
+        }
+
         if (!isset($_POST['change_role_display_name_nonce']) || !wp_verify_nonce($_POST['change_role_display_name_nonce'], 'change_role_display_name')) {
             return $this->solvease_roles_caps_default_warning();
         } else {
@@ -604,6 +614,11 @@ class Solvease_Roles_Capabilities_Functionality
      */
     public function solvease_roles_capabilities_add_role()
     {
+        $plugin_caps = Solvease_Roles_Capabilities_User_Caps::solvease_roles_capabilities_caps();
+        if (!current_user_can($plugin_caps['add_new_role'])) {
+             return $this->solvease_roles_caps_default_warning();
+        }
+
         if (!isset($_POST['solvease_add_role_nonce']) || !wp_verify_nonce($_POST['solvease_add_role_nonce'], 'solvease_add_role')) {
             // some thing went wrong with post variable
             return $this->solvease_roles_caps_default_warning();
@@ -661,6 +676,11 @@ class Solvease_Roles_Capabilities_Functionality
      */
     public function solvease_roles_capabilities_delete_cap()
     {
+        $plugin_caps = Solvease_Roles_Capabilities_User_Caps::solvease_roles_capabilities_caps();
+        if (!current_user_can($plugin_caps['remove_capability'])) {
+             return $this->solvease_roles_caps_default_warning();
+        }
+
         if (!isset($_POST['solvease_rc_delete_cap_nonce']) || !wp_verify_nonce($_POST['solvease_rc_delete_cap_nonce'], 'solvease_rc_delete_cap')) {
             return $this->solvease_roles_caps_default_warning();
         }
@@ -724,6 +744,11 @@ class Solvease_Roles_Capabilities_Functionality
      */
     public function solvease_roles_capabilities_import_capability()
     {
+        $plugin_caps = Solvease_Roles_Capabilities_User_Caps::solvease_roles_capabilities_caps();
+        if (!current_user_can($plugin_caps['import'])) {
+             return $this->solvease_roles_caps_default_warning();
+        }
+
         if (!isset($_POST['solvease_import_capability_nonce']) || !wp_verify_nonce($_POST['solvease_import_capability_nonce'], 'solvease_import_capability')) {
             return $this->solvease_roles_caps_default_warning();
         }

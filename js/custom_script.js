@@ -180,7 +180,8 @@
                 $(".loading-icon").show();
                 var data = {
                     'action': 'export_role_cap',
-                    'roles_to_export': $("#cap_role_export").val()
+                    'roles_to_export': $("#cap_role_export").val(),
+                    'solvease_export_capability_nonce': $('input[name="solvease_export_capability_nonce"]').val()
                 };
 
                 $.ajax({

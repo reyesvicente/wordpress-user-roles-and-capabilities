@@ -28,7 +28,7 @@ class Solvease_Roles_Capabilities {
 
     function __construct() {
         $this->plugin_name = 'WP Roles and Capabilities';
-        $this->plugin_version = '1.2.1';
+        $this->plugin_version = '1.2.7';
         $this->translation_domain = 'solvease_wprc';
         $this->load_dependecies();
         $this->set_locale();

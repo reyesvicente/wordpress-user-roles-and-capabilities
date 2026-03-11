@@ -97,7 +97,9 @@ class Solvease_Roles_Capabilities_Table
                     break;
 
                 case "save_cap_changes":
-                    $message = $this->roles_capabilities_function->solvease_roles_capabilities_save_capabilities();
+                    if (current_user_can($this->plugin_caps['manage_all_capabilities'])) {
+                        $message = $this->roles_capabilities_function->solvease_roles_capabilities_save_capabilities();
+                    }
                     break;
 
                 case "change_role_display_name":
